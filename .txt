@@ -1,0 +1,12 @@
+yarn add -
+    express 
+    nodemon 
+    mysql2 
+    sequelize 
+    bcrypt 
+    jsonwebtoken 
+    multer
+    dotenv
+
+nanoid : thư viện tạo random ký tự tùy độ dài
+--link: https://zelark.github.io/nano-id-cc/
