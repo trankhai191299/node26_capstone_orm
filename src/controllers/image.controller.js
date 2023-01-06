@@ -1,0 +1,28 @@
+const { response } = require('../helpers/response');
+const imageService = require('../services/image.service');
+
+const getAllImage = () =>{
+    return async(req,res,next)=>{
+        try {
+            const getImage = await imageService.getImageService();
+            res.status(200).json(response(getImage));
+        } catch (error) {
+            next(error);
+        }
+    }
+}
+const getImageByName = () =>{
+    return async(req,res,next)=>{
+        try {
+            const {name} = req.params
+            const getImgByName = await imageService.getImageByName(name)
+            res.status(200).json(response(getImgByName));
+        } catch (error) {
+            next(error);
+        }
+    }
+}
+module.exports = {
+    getAllImage,
+    getImageByName,
+}
