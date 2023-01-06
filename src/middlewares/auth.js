@@ -8,7 +8,7 @@ const configs = require('../config');
 const extractTokenfromHeader = (headers) =>{
     const bearerToken = headers.authorization; // Bearer asdascljcoxc210eq
     const parts = bearerToken.split(' '); // [Bearer,asdascljcoxc210eq]
-    if(parts.length !== 2 || parts[0]!= "Bearer" || !parts[1].trim()){
+    if(parts.length !== 2 || parts[0]!= "Bearer" || !parts[1].trim() || !parts){
         throw new AppError(401,"Invalid Token");
     };
 
