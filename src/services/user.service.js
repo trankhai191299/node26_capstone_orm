@@ -18,7 +18,24 @@ const adminCreateUserService = async(data) => {
         throw error;
     };
 };
+const registerService = async(data)=>{
+    try {
+        const userFound = await User.findOne({
+            where:{
+                email:data.email,
+            }
+        })
+        if(userFound){
+            throw new AppError(401,"email is existed")
+        }
+        const createdUser = await User.create(data)
+        return createdUser;
+    } catch (error) {
+        throw error
+    }
+}
 
 module.exports = {
-    adminCreateUserService
+    adminCreateUserService,
+    registerService
 }

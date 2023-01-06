@@ -3,6 +3,7 @@
 const jwt = require('jsonwebtoken');
 const { AppError } = require("../helpers/error");
 const {User} = require('../models');
+const configs = require('../config');
 
 const extractTokenfromHeader = (headers) =>{
     const bearerToken = headers.authorization; // Bearer asdascljcoxc210eq
@@ -17,7 +18,7 @@ const extractTokenfromHeader = (headers) =>{
 const authorization = async (req,res,next)=>{
     try {
         const token = extractTokenfromHeader(req.headers);
-        const payload = jwt.verify(token,'cyber-node26');
+        const payload = jwt.verify(token,configs.SECRET_KEY);
         // console.log(payload);
         // dùng token payload có chứa id của user ddeere lấy thông tin
         const user = await User.findByPk(payload.id);
