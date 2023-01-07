@@ -24,7 +24,20 @@ const register = () =>{
         }
     }
 }
+
+const getCommentbyImgId = () =>{
+    return async(req,res,next)=>{
+        try {
+            const {id} = req.params;
+            const img = await userService.getCommentbyImgIdService(id)
+            res.status(200).json(response(img))
+        } catch (error) {
+            next(error)
+        }
+    }
+}
 module.exports = {
     adminCreateUser,
     register,
+    getCommentbyImgId,
 }

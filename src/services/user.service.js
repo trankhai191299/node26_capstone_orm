@@ -1,5 +1,5 @@
 const { AppError } = require("../helpers/error");
-const { User } = require("../models");
+const { User, Image } = require("../models");
 
 const adminCreateUserService = async(data) => {
     try {
@@ -34,8 +34,32 @@ const registerService = async(data)=>{
         throw error
     }
 }
-
+const getCommentbyImgIdService = async(imgId)=>{
+    try {
+        const imgFound = await Image.findOne({
+            where:{
+                id:imgId
+            }
+        })
+        if(!imgFound){
+            throw new AppError(404,"image not found");
+        }
+        // console.log('Img proto',imgFound.__proto__);
+        
+        const userCmt = await imgFound.getNguoi_binh_luan({
+            attributes:{
+                exclude:['password','role'],
+            },
+        });
+        
+        return userCmt
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
 module.exports = {
     adminCreateUserService,
-    registerService
+    registerService,
+    getCommentbyImgIdService
 }
