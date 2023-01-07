@@ -33,8 +33,21 @@ const getUserImgbyId = () =>{
         }
     }
 }
+const deleteImgbyId = ()=>{
+    return async(req,res,next)=>{
+        try {
+            const {id} = req.params;
+            const {user} = res.locals
+            await imageService.deleteImgbyId(user,id);
+            res.status(200).json(response(true))
+        } catch (error) {
+            next(error);
+        }
+    }
+}
 module.exports = {
     getAllImage,
     getImageByName,
     getUserImgbyId,
+    deleteImgbyId,
 }

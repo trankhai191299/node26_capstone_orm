@@ -29,7 +29,7 @@ v1.get('/cmt/:id',userController.getCommentbyImgId())//get thong tin binh luan =
 v1.get('/profile',authorization,authController.getProfile());//get thong tin user
 //get ds anh da luu theo userId
 //get ds anh da tao theo userId
-//delete xoa anh da tao theo id anh
+v1.delete('/image/:id',authorization,imageController.deleteImgbyId());//delete xoa anh da tao theo id anh
 
 //--------trang them anh--------//
 //post them 1 anh user

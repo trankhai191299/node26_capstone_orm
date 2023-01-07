@@ -44,8 +44,27 @@ const getUserImgbyId = async(id)=>{
         throw error;
     }
 }
+const deleteImgbyId = async(requester,imgId)=>{
+    try {
+        const imgFound = await Image.findByPk(imgId);
+        if(!imgFound){
+            throw new AppError(404,'Image not found');
+        }
+        if(imgFound.userId !== requester.id){
+            throw new AppError(403,'No permission');
+        }
+        await Image.destroy({
+            where:{
+                id:imgId
+            }
+        });
+    } catch (error) {
+        throw error;
+    }
+}
 module.exports = {
     getImageService,
     getImageByName,
     getUserImgbyId,
+    deleteImgbyId,
 };
