@@ -52,7 +52,10 @@ const getCommentbyImgIdService = async(imgId)=>{
             },
         });
         
-        return userCmt
+        return {
+            userCmt,
+            imgFound
+        }
     } catch (error) {
         console.log(error);
         throw error;
