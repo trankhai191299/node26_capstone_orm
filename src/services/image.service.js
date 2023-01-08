@@ -62,9 +62,51 @@ const deleteImgbyId = async(requester,imgId)=>{
         throw error;
     }
 }
+const getCreatedImgbyUserId = async(requester)=>{
+    try {
+        const userFound = await User.findOne({
+            where:{
+                id:requester.id
+            },
+            include:'hinh_anh'
+        });
+        if(!userFound){
+            throw new AppError(404,'user not found')
+        };
+        return userFound;
+    } catch (error) {
+        throw error
+    }
+}
+const getSaveImgbyUserId = async(requester)=>{
+    try {
+        const userFound = await User.findOne({
+            where:{
+                id:requester.id
+            },
+            attributes:{
+                exclude:['password','role'],
+            }
+        });
+        if(!userFound){
+            throw new AppError(404,'user not found')
+        };
+        // console.log(userFound.__proto__);
+        const listImg = await userFound.getAnh_luu()
+        const data = {
+            "danh_sach_anh_luu":listImg,
+            "nguoi_luu":userFound
+        }
+        return data;
+    } catch (error) {
+        throw error
+    }
+}
 module.exports = {
     getImageService,
     getImageByName,
     getUserImgbyId,
     deleteImgbyId,
+    getCreatedImgbyUserId,
+    getSaveImgbyUserId,
 };

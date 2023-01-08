@@ -27,8 +27,8 @@ v1.get('/cmt/:id',userController.getCommentbyImgId())//get thong tin binh luan =
 
 //--------trang quan ly anh--------//
 v1.get('/profile',authorization,authController.getProfile());//get thong tin user
-//get ds anh da luu theo userId
-//get ds anh da tao theo userId
+v1.get('/savimg',authorization,imageController.getSaveImgbyUserId())//get ds anh da luu theo userId
+v1.get('/crimg',authorization,imageController.getCreatedImgbyUserId())//get ds anh da tao theo userId
 v1.delete('/image/:id',authorization,imageController.deleteImgbyId());//delete xoa anh da tao theo id anh
 
 //--------trang them anh--------//
