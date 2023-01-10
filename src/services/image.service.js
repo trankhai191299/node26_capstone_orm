@@ -142,6 +142,7 @@ const saveCmt = async(cmt,user,imgId)=>{
 const checkSavedImg = async(user,imgId)=>{
     try {
         let msg = ''
+        let finalImg
         const userFound = await User.findOne({
             where:{
                 id:user.id
@@ -160,7 +161,6 @@ const checkSavedImg = async(user,imgId)=>{
         }
         // console.log("proto img",userFound.__proto__);
         const checked = await userFound.hasAnh_luu(imgId)
-        let finalImg
         if(checked){
             msg="Image has been saved"
             finalImg = imgFound
@@ -174,6 +174,28 @@ const checkSavedImg = async(user,imgId)=>{
         throw error
     }
 }
+const uploadImg = async(file,desc,user)=>{
+    try {
+        const userFound = await User.findOne({
+            where:{
+                id:user.id
+            }
+        })
+        if(!userFound){
+            throw new AppError(404,"User not found")
+        }
+
+        const createdImg = await Image.create({
+            name:file.filename,
+            link:`http://localhost:4000/${file.path}`,
+            description:desc?desc:"",
+            userId:user.id
+        })
+        return createdImg
+    } catch (error) {
+        throw error
+    }
+}
 module.exports = {
     getImageService,
     getImageByName,
@@ -182,5 +204,6 @@ module.exports = {
     getCreatedImgbyUserId,
     getSaveImgbyUserId,
     saveCmt,
-    checkSavedImg
+    checkSavedImg,
+    uploadImg
 };

@@ -1,3 +1,4 @@
+const { AppError } = require('../helpers/error');
 const { response } = require('../helpers/response');
 const imageService = require('../services/image.service');
 
@@ -91,6 +92,22 @@ const checkSavedImg = () =>{
         }
     }
 }
+const uploadImg = ()=>{
+    return async(req,res,next)=>{
+        try {
+            const file = req.file;
+            const {user} = res.locals;
+            const {desc} = req.body;
+            if(!file){
+                next(new AppError(400,'Missing file'));
+            };
+            const uploaded = await imageService.uploadImg(file,desc,user)
+            res.status(200).json(response(uploaded))
+        } catch (error) {
+            next(error)
+        }
+    }
+}
 module.exports = {
     getAllImage,
     getImageByName,
@@ -100,4 +117,5 @@ module.exports = {
     getSaveImgbyUserId,
     saveCmt,
     checkSavedImg,
+    uploadImg,
 }
