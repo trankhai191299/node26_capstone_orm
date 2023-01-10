@@ -102,6 +102,78 @@ const getSaveImgbyUserId = async(requester)=>{
         throw error
     }
 }
+const saveCmt = async(cmt,user,imgId)=>{
+    try {
+        const userFound = await User.findOne({
+            where:{
+                id:user.id
+            }
+        });
+        const imgFound = await Image.findOne({
+            where:{
+                id:imgId
+            }
+        });
+        if(!userFound){
+            throw new AppError(404,'User not found')
+        }
+        if(!imgFound){
+            throw new AppError(404,'Image not found')
+        }
+        // console.log("proto user",userFound.__proto__);
+        // console.log("proto img",imgFound.__proto__);
+        // await userFound.addAnh_binh_luan(imgId,{
+        //     through:{
+        //         comment:cmt
+        //     }
+        // })
+        await imgFound.addNguoi_binh_luan(user.id,{
+            through:{
+                comment:cmt
+            }
+        })
+        
+        return null
+    } catch (error) {
+        console.log(error);
+        throw error
+    }
+}
+const checkSavedImg = async(user,imgId)=>{
+    try {
+        let msg = ''
+        const userFound = await User.findOne({
+            where:{
+                id:user.id
+            }
+        })
+        const imgFound = await Image.findOne({
+            where:{
+                id:imgId
+            }
+        });
+        if(!userFound){
+            throw new AppError(404,'User not found')
+        }
+        if(!imgFound){
+            throw new AppError(404,'Image not found')
+        }
+        // console.log("proto img",userFound.__proto__);
+        const checked = await userFound.hasAnh_luu(imgId)
+        let finalImg
+        if(checked){
+            msg="Image has been saved"
+            finalImg = imgFound
+        }else{
+            msg="Image has not been saved"
+            finalImg = null
+        }
+        return {msg,finalImg}
+    } catch (error) {
+        // console.log(error);
+        throw error
+    }
+}
 module.exports = {
     getImageService,
     getImageByName,
@@ -109,4 +181,6 @@ module.exports = {
     deleteImgbyId,
     getCreatedImgbyUserId,
     getSaveImgbyUserId,
+    saveCmt,
+    checkSavedImg
 };

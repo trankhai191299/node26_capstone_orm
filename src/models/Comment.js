@@ -11,6 +11,10 @@ module.exports = (sequelize) =>{
                 type:DataTypes.INTEGER,
                 field:'hinh_id'
             },
+            comment:{
+                type:DataTypes.STRING,
+                field:'binh_luan'
+            },
             cmtDate:{
                 type:DataTypes.DATE,
                 field:'ngay_binh_luan',

@@ -22,8 +22,8 @@ v1.get('/images/:name',imageController.getImageByName());//get tim kiem anh theo
 //--------trang chi tiet--------//
 v1.get('/img/:id',imageController.getUserImgbyId())//get thong tin anh + nguoi tao anh = id anh
 v1.get('/cmt/:id',userController.getCommentbyImgId())//get thong tin binh luan = id anh
-//get thong tin da luu hinh nay chua the id anh
-//post luu thong tin binh luan cua ng dung vs hinh anh
+v1.get('/savcmt',authorization,imageController.checkSavedImg())//get thong tin da luu hinh nay chua theo id anh
+v1.post('/cmt',authorization,imageController.saveCmt())//post luu thong tin binh luan cua ng dung vs hinh anh
 
 //--------trang quan ly anh--------//
 v1.get('/profile',authorization,authController.getProfile());//get thong tin user

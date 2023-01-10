@@ -67,11 +67,37 @@ const getSaveImgbyUserId = () =>{
         }
     }
 }
+const saveCmt = ()=>{
+    return async(req,res,next)=>{
+        try {
+            const {cmt,imgId} = req.body
+            const {user} = res.locals
+            const savedCmt = await imageService.saveCmt(cmt,user,imgId)
+            res.status(200).json(response(savedCmt))
+        } catch (error) {
+            next(error)
+        }
+    }
+}
+const checkSavedImg = () =>{
+    return async(req,res,next)=>{
+        try {
+            const {imgId} = req.body
+            const {user} = res.locals
+            const checkSave = await imageService.checkSavedImg(user,imgId)
+            res.status(200).json(response(checkSave))
+        } catch (error) {
+            next(error)
+        }
+    }
+}
 module.exports = {
     getAllImage,
     getImageByName,
     getUserImgbyId,
     deleteImgbyId,
     getCreatedImgbyUserId,
-    getSaveImgbyUserId
+    getSaveImgbyUserId,
+    saveCmt,
+    checkSavedImg,
 }
