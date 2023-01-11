@@ -36,8 +36,21 @@ const getCommentbyImgId = () =>{
         }
     }
 }
+const updateUserInformation = ()=>{
+    return async(req,res,next)=>{
+        try {
+            const data = req.body
+            const {user} = res.locals
+            const updatedUser = await userService.updateUserInformationService(user,data)
+            res.status(200).json(response(updatedUser));
+        } catch (error) {
+            next(error)
+        }
+    }
+}
 module.exports = {
     adminCreateUser,
     register,
     getCommentbyImgId,
+    updateUserInformation
 }

@@ -38,7 +38,7 @@ v1.delete('/image/:id',authorization,imageController.deleteImgbyId());//delete x
 v1.post('/upload-img',authorization,upload.single('file'),imageController.uploadImg())//post them 1 anh user
 
 //--------chinh sua thong tin ca nhan--------//
-//put thong tin ca nhan
+v1.put('/user',authorization,userController.updateUserInformation());//put thong tin ca nhan
 
 
 module.exports = v1;
