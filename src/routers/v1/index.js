@@ -35,7 +35,7 @@ v1.get('/cr-img',authorization,imageController.getCreatedImgbyUserId())//get ds 
 v1.delete('/image/:id',authorization,imageController.deleteImgbyId());//delete xoa anh da tao theo id anh
 
 //--------trang them anh--------//
-v1.post('/upload-img',upload.single('file'),authorization,imageController.uploadImg())//post them 1 anh user
+v1.post('/upload-img',authorization,upload.single('file'),imageController.uploadImg())//post them 1 anh user
 
 //--------chinh sua thong tin ca nhan--------//
 //put thong tin ca nhan
