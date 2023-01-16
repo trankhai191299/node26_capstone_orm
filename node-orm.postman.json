@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "5614bb29-1be9-4bfc-b96e-18a75ee5565a",
+		"name": "node-orm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21529586"
+	},
+	"item": [
+		{
+			"name": "trang dang nhap dang ky",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJraGFpdHJhbkBnbWFpbC5jb20iLCJpYXQiOjE2NzI5Nzg0NjIsImV4cCI6MTY3MzAyMTY2Mn0.r1R0xjmLZUY7n2xIGPZ3G5XL-Mv81526tEodZNGVTjU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":\"alamas@gmail.com\",\n  \"password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/register",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":\"brhu123@gmail.com\",\n  \"password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trang chu",
+			"item": [
+				{
+					"name": "get all img",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/images",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all img by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/images/anh%20cho",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"images",
+								"anh%20cho"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trang chi tiet",
+			"item": [
+				{
+					"name": "get user+img data by id ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/img/1",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"img",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cmt by img id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/cmt/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"cmt",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post cmt",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cmt\":\"ABC 3\",\n  \"imgId\":4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/cmt",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"cmt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check save img",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/save-cmt",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"save-cmt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trang quan ly anh",
+			"item": [
+				{
+					"name": "get profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list created img by user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/cr-img",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"cr-img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list save img by user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/save-img",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"save-img"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete anh = id anh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzUzNDQ0NSwiZXhwIjoxNjczNTc3NjQ1fQ.GccSOfGlEfObTgCNqPyv3MhvlxlFkaEjmU2Y8yBatZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/capstone/v1/image/13",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"image",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trang them anh",
+			"item": [
+				{
+					"name": "upload image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MzcyMSwiZXhwIjoxNjczOTE2OTIxfQ.JZV2YFVvmFR8ZlvFR7qk_O6IcFyUQ2sfAoYApqU4aEQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "desc",
+									"value": "bcd",
+									"type": "default"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/PC/Pictures/KhaiTran.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/upload-img",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"upload-img"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trang chinh sua thong tin ca nhan",
+			"item": [
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJicmh1MTIzQGdtYWlsLmNvbSIsImlhdCI6MTY3MzQ1MjE0OCwiZXhwIjoxNjczNDk1MzQ4fQ.2u8ysR8Q-3kBzdqoqCvebyQ4tMBKEBvw6jzFAPca0Bo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5,\n    \"email\": \"brhu123@gmail.com\",\n    \"name\": \"brhu\",\n    \"age\": 24,\n    \"avatar\": \"asfjaslox\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "new account admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJraGFpdHJhbkBnbWFpbC5jb20iLCJpYXQiOjE2NzMwNjE5ODEsImV4cCI6MTY3MzEwNTE4MX0.EenfdNL-gHBfiLGzjwu01zT8dqUyffVyFbZHczlWEPEa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":\"isha123@gmail.com\",\n  \"password\":\"1234\",\n  \"name\":\"isah\",\n  \"age\":27,\n  \"avatar\":\"asfjaslox\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/capstone/v1/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"capstone",
+								"v1",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "c:\\Users\\PC\\Pictures\\KhaiTran.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/capstone/v1/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"capstone",
+						"v1",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
